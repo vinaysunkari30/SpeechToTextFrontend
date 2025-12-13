@@ -456,8 +456,8 @@ const Home = () => {
               </ul>
             ) : (
               <>
-                <h1>You have no transcriptions</h1>
-                <h1>Upload or record the speech and transfer</h1>
+                <h1 className="text-sky-900 text-md font-semibold">You have no transcriptions</h1>
+                <h1 className="text-sky-900 text-md font-semibold">Upload or record the speech and transfer</h1>
               </>
             )}
           </div>
