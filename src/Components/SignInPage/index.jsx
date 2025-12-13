@@ -147,7 +147,7 @@ const SignInPage = () => {
             <TailSpin
               height="40"
               width="40"
-              color="text-blue-900"
+              color="blue"
               ariaLabel="tail-spin-loading"
               visible={isLoading}
             />
