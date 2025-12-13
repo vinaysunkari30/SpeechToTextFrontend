@@ -107,22 +107,22 @@ const LoginPage = () => {
           />
         </div>
         <div className="self-center flex justify-center m-4">
-          {isLoading ? (
-            <TailSpin
-              height="40"
-              width="40"
-              color="white"
-              ariaLabel="tail-spin-loading"
-              visible={isLoading}
-            />
-          ) : (
-            <button
-              type="submit"
-              className="login-btn py-2 text-white md:bg-blue-900 text-lg w-30 rounded-lg tracking-wide cursor-pointer"
-            >
-              Login
-            </button>
-          )}
+          <button
+            type="submit"
+            className="login-btn py-2 text-white md:bg-blue-900 text-lg w-30 rounded-lg tracking-wide cursor-pointer"
+          >
+            {isLoading ? (
+              <TailSpin
+                height="40"
+                width="40"
+                color="white"
+                ariaLabel="tail-spin-loading"
+                visible={isLoading}
+              />
+            ) : (
+              <h1>Login</h1>
+            )}
+          </button>
         </div>
         <div className="flex justify-center gap-2">
           <p className="text-purple-950 text-center font-medium md:text-blue-900">
