@@ -31,11 +31,7 @@ const SignInPage = () => {
       }
     } catch (error) {
       setIsLoading(false);
-      if (error.response && error.response.status === 400) {
-        toast.error(error.response.data.message);
-      } else {
-        toast.error(error.response);
-      }
+      toast.error(error.response?.data.message);
     }
   };
 
@@ -157,7 +153,7 @@ const SignInPage = () => {
           ) : (
             <button
               type="submit"
-              className="login-btn text-white md:bg-blue-900 text-lg w-30 rounded-lg tracking-wide cursor-pointer"
+              className="login-btn py-2 text-white md:bg-blue-900 text-lg w-30 rounded-lg tracking-wide cursor-pointer"
             >
               SignIn
             </button>

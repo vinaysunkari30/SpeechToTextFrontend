@@ -33,11 +33,7 @@ const LoginPage = () => {
       }
     } catch (error) {
       setIsLoading(false);
-      if (error.response && error.response.status === 400) {
-        toast.error(error.response.data.message);
-      } else {
-        toast.error(error.response?.data || error);
-      }
+      toast.error(error.response.data.message);
     }
   };
 
@@ -72,7 +68,7 @@ const LoginPage = () => {
         onSubmit={onSubmitUser}
         className="login-div p-5 flex flex-1 bg-slate-800/15 md:bg-white w-sm rounded-3xl flex-col justify-start items-center border-2 border-blue-900 md:justify-center"
       >
-        <h1 className='text-purple-950 text-center md:text-blue-900 underline decoration-2 mb-10 font-semibold font-(font-family: "Roboto")'>
+        <h1 className='text-purple-950 text-4xl text-center md:text-blue-900 underline decoration-2 mb-10 font-semibold font-(font-family: "Roboto")'>
           User Login{" "}
         </h1>
         <div className="flex flex-col mb-3">
@@ -121,7 +117,7 @@ const LoginPage = () => {
           ) : (
             <button
               type="submit"
-              className="login-btn text-white md:bg-blue-900 text-lg w-30 rounded-lg tracking-wide cursor-pointer"
+              className="login-btn py-2 text-white md:bg-blue-900 text-lg w-30 rounded-lg tracking-wide cursor-pointer"
             >
               Login
             </button>
