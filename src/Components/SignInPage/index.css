@@ -1,0 +1,18 @@
+.app-div{
+  height: 100%;
+  width: 100vw;
+}
+.login-div{
+  box-shadow: 0px 0px 10px 3px rgb(74, 107, 215);
+}
+.login-btn{
+  background-color: rgb(62, 2, 62);
+}
+@media screen and (min-width: 768px){
+  .login-div{
+    box-shadow: 0px 0px 8px 4px rgb(16, 25, 94);
+  }
+  .login-btn{
+    background-color: rgb(16, 25, 94);
+  }
+}
