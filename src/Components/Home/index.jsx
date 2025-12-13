@@ -29,7 +29,7 @@ const Home = () => {
 
   useEffect(()=>{
     getTranscriptionsList()
-  }, [transcription])
+  }, [])
 
   const getTranscriptionsList = async() =>{
     try{
@@ -91,6 +91,7 @@ const Home = () => {
         formData.append('audio', recordedFile);
       } else {
         toast.error("Please upload or record an audio first!");
+        setLoading(false)
         return;
       }
       setLoading(true)
@@ -105,10 +106,11 @@ const Home = () => {
         setTranscription(data.transcriptionText);
         toast.success("Audio converted successfully!");
       } else {
-        toast.error("No transcription returned from server.");
+        toast.error('Failed to transcribe audio. Retry!');
+        setLoading(false)
       }
     } catch (err) {
-      toast.error("Failed to transcribe audio Retry again and speak something");
+      toast.error(err.response?.data);
     }
   };
 
