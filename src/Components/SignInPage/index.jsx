@@ -1,7 +1,6 @@
 import {Link, useNavigate} from 'react-router-dom'
 import {useState} from 'react'
 import axios from 'axios'
-// import './index.css'
 import { toast } from 'react-toastify';
 
 const SignInPage = () => {
@@ -28,6 +27,7 @@ const SignInPage = () => {
   }
 
   const onSuccessSignIn = async(userInfo) => {
+    console.log(userInfo)
     try{
       const response = await axios.post(
         'https://speechtotextbackend-2owz.onrender.com/sign-in',
@@ -44,7 +44,7 @@ const SignInPage = () => {
       if (error.response && error.response.status === 400) {
         toast.error(error.response.data.message);
       } else {
-        toast.error('Something went wrong');
+        toast.error(error.response);
       }
     }
   }
