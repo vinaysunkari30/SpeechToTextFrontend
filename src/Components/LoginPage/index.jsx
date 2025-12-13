@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { TailSpin } from "react-loader-spinner";
 import "./index.css";
 
 const LoginPage = () => {
