@@ -99,7 +99,7 @@ const Home = () => {
       }
       setLoading(true);
       const { data } = await axios.post(
-        "http://localhost:3000/upload-audio",
+        "https://speechtotextbackend-2owz.onrender.com/upload-audio",
         formData,
         {
           headers: {

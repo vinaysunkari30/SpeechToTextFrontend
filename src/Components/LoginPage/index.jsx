@@ -9,17 +9,12 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userData, setUserData] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   const navigate = useNavigate();
 
-  const onGetEmail = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const onGetPassword = (event) => {
-    setPassword(event.target.value);
-  };
-
   const onSuccess = async (userInfo) => {
+    setIsLoading(true);
     try {
       const response = await axios.post(
         "https://speechtotextbackend-2owz.onrender.com/login",
@@ -31,11 +26,13 @@ const LoginPage = () => {
         }
       );
       if (response.status === 200) {
+        setIsLoading(false);
         const token = response.data.jwtToken;
         Cookies.set("token", token, { expires: 2, path: "/", sameSite: "Lax" });
         navigate("/");
       }
     } catch (error) {
+      setIsLoading(false);
       if (error.response && error.response.status === 400) {
         toast.error(error.response.data.message);
       } else {
@@ -87,7 +84,7 @@ const LoginPage = () => {
           </label>
           <input
             id="email"
-            onChange={onGetEmail}
+            onChange={(event) => setEmail(event.target.value)}
             value={email}
             className="bg-purple-300 w-78 md: border-2 border-purple-950 h-11 pl-2 text-purple-950 font-medium rounded-md outline-0 placeholder-purple-950 md:text-blue-900 md:border-2 md:border-blue-900 md:placeholder-blue-900 md:bg-blue-200"
             type="email"
@@ -104,7 +101,7 @@ const LoginPage = () => {
           </label>
           <input
             id="password"
-            onChange={onGetPassword}
+            onChange={(event) => setPassword(event.target.value)}
             value={password}
             className="bg-purple-300 w-78 border-2 border-purple-950 h-11 pl-2 text-purple-950 font-medium rounded-md outline-0 placeholder-purple-950 md:text-blue-900 md:border-2 md:border-blue-900 md:placeholder-blue-900 md:bg-blue-200"
             type="password"
@@ -113,12 +110,22 @@ const LoginPage = () => {
           />
         </div>
         <div className="self-center flex justify-center m-4">
-          <button
-            type="submit"
-            className="login-btn text-white md:bg-blue-900 text-lg w-30 tracking-wide"
-          >
-            Login
-          </button>
+          {isLoading ? (
+            <TailSpin
+              height="40"
+              width="40"
+              color="white"
+              ariaLabel="tail-spin-loading"
+              visible={isLoading}
+            />
+          ) : (
+            <button
+              type="submit"
+              className="login-btn text-white md:bg-blue-900 text-lg w-30 rounded-lg tracking-wide cursor-pointer"
+            >
+              Login
+            </button>
+          )}
         </div>
         <div className="flex justify-center gap-2">
           <p className="text-purple-950 text-center font-medium md:text-blue-900">
