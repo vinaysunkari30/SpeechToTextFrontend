@@ -143,22 +143,22 @@ const SignInPage = () => {
           />
         </div>
         <div className="self-center flex justify-center mb-2">
-          <button
-            type="submit"
-            className="login-btn py-2 text-white md:bg-blue-900 text-lg w-30 rounded-lg tracking-wide cursor-pointer"
-          >
-            {isLoading ? (
-              <TailSpin
-                height="40"
-                width="40"
-                color="white"
-                ariaLabel="tail-spin-loading"
-                visible={isLoading}
-              />
-            ) : (
-              <h1>SignIn</h1>
-            )}
-          </button>
+          {isLoading ? (
+            <TailSpin
+              height="40"
+              width="40"
+              color="text-blue-900"
+              ariaLabel="tail-spin-loading"
+              visible={isLoading}
+            />
+          ) : (
+            <button
+              type="submit"
+              className="login-btn py-2 text-white md:bg-blue-900 text-lg w-30 rounded-lg tracking-wide cursor-pointer"
+            >
+              SignIn
+            </button>
+          )}
         </div>
         <div className="flex justify-center gap-2 mb-3">
           <p className="text-purple-950 text-center font-medium md:text-blue-900">
