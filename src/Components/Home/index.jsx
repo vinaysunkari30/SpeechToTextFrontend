@@ -32,7 +32,7 @@ const Home = () => {
     try {
       const token = Cookies.get("token");
       const response = await axios(
-        "https://speechtotextbackend-2owz.onrender.com/transcriptions",
+        "https://speechtotextbackend-if33.onrender.com//transcriptions",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -99,7 +99,7 @@ const Home = () => {
       }
       setLoading(true);
       const { data } = await axios.post(
-        "https://speechtotextbackend-2owz.onrender.com/upload-audio",
+        "https://speechtotextbackend-if33.onrender.com/upload-audio",
         formData,
         {
           headers: {

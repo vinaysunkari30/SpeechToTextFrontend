@@ -18,7 +18,7 @@ const LoginPage = () => {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        "https://speechtotextbackend-2owz.onrender.com/login",
+        "https://speechtotextbackend-if33.onrender.com/login",
         userInfo,
         {
           headers: {
