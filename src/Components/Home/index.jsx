@@ -32,7 +32,7 @@ const Home = () => {
     try {
       const token = Cookies.get("token");
       const response = await axios(
-        "https://speechtotextbackend-if33.onrender.com//transcriptions",
+        "https://speechtotextbackend-if33.onrender.com/transcriptions",
         {
           headers: {
             Authorization: `Bearer ${token}`,
