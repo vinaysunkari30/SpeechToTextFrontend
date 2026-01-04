@@ -34,7 +34,7 @@ const Home = () => {
   const getTranscriptionsList = async() =>{
     try{
       const token = Cookies.get('token')
-      const response = await axios('http://localhost:3000/transcriptions', {headers:{
+      const response = await axios('https://speechtotextbackend-if33.onrender.com/transcriptions', {headers:{
         Authorization: `Bearer ${token}`,
       }})
       if(response.status===200){
@@ -94,7 +94,7 @@ const Home = () => {
         return;
       }
       setLoading(true)
-      const { data } = await axios.post('http://localhost:3000/upload-audio', formData, {
+      const { data } = await axios.post('https://speechtotextbackend-if33.onrender.com/upload-audio', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,

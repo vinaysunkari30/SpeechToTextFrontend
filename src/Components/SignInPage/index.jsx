@@ -3,6 +3,7 @@ import {useState} from 'react'
 import axios from 'axios'
 // import './index.css'
 import { toast } from 'react-toastify';
+import {TailSpin} from 'react-loader-spinner'
 
 const SignInPage = () => {
   const [firstName, setFirstName] = useState('')
@@ -12,6 +13,7 @@ const SignInPage = () => {
   const [userData, setUserData] = useState()
   const [isClicked, setClicked] = useState(false)
   const [error, setError] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
 
   const onGetFirstName = (event) =>{
@@ -28,19 +30,22 @@ const SignInPage = () => {
   }
 
   const onSuccessSignIn = async(userInfo) => {
+    setIsLoading(true)
     try{
       const response = await axios.post(
-        'http://localhost:3000/sign-in',
+        'https://speechtotextbackend-if33.onrender.com/sign-in',
         userInfo,
         {
           headers: { 'Content-Type': 'application/json' }
         }
       );
       if(response.status === 200){
+        setIsLoading(false)
         toast.success('User created successfully');
         navigate('/login')
       }
     }catch(error){
+      setIsLoading(false)
       if (error.response && error.response.status === 400) {
         toast.error(error.response.data.message);
       } else {
